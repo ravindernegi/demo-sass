@@ -1,0 +1,63 @@
+@import 'variable';
+
+@mixin background-red {
+    background-color: $color;
+}
+
+
+@mixin background-custom($color, $space, $value) {
+    background-color: $color;
+    #{$space}: $value+'px';
+
+}
+
+
+.block {
+    border: 1px solid #fff;
+}
+
+%block-bold {
+    font-weight: bold;
+}
+
+
+body {
+    @include background-custom('red', padding, 10);
+
+    .demo {
+        font-size: 100px;
+        @include background-custom('yellow', margin, 20);
+
+        .test {
+            font-size: 50px;
+            @include background-custom('white', top, 30);
+
+
+            a {
+                color: #fff;
+                @include background-custom('green', left, 40);
+            }
+        }
+    }
+
+
+    .h1 {
+        @extend .block;
+        color: #fff;
+    }
+
+    .h2 {
+        @extend .block;
+    }
+
+
+
+    .h3 {
+        @extend %block-bold;
+        color: #fff;
+    }
+
+    .h4 {
+        @extend %block-bold;
+    }
+}
